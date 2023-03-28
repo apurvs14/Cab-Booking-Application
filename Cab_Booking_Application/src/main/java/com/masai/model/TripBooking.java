@@ -1,0 +1,134 @@
+package com.masai.model;
+
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
+
+/*NOTE: All relations are bidirectional.*/
+
+@Entity
+public class TripBooking {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int tripBookingID;
+	
+	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+	private int customerID;
+	
+	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+	private Driver driver;
+	
+	private String fromLocation; 
+	private String toLocation; 
+	private LocalDateTime fromDateTime; 
+	private LocalDateTime toDateTime;
+	private boolean status;
+	private float distanceInKM; 
+	private float bill;
+	
+	
+	public TripBooking() {
+		
+	}
+	
+	public TripBooking(int tripBookingID, int customerID, Driver driver, String fromLocation, String toLocation,
+			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKM, float bill) {
+		super();
+		this.tripBookingID = tripBookingID;
+		this.customerID = customerID;
+		this.driver = driver;
+		this.fromLocation = fromLocation;
+		this.toLocation = toLocation;
+		this.fromDateTime = fromDateTime;
+		this.toDateTime = toDateTime;
+		this.status = status;
+		this.distanceInKM = distanceInKM;
+		this.bill = bill;
+	}
+
+	public int getTripBookingID() {
+		return tripBookingID;
+	}
+
+	public void setTripBookingID(int tripBookingID) {
+		this.tripBookingID = tripBookingID;
+	}
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+
+	public String getFromLocation() {
+		return fromLocation;
+	}
+
+	public void setFromLocation(String fromLocation) {
+		this.fromLocation = fromLocation;
+	}
+
+	public String getToLocation() {
+		return toLocation;
+	}
+
+	public void setToLocation(String toLocation) {
+		this.toLocation = toLocation;
+	}
+
+	public LocalDateTime getFromDateTime() {
+		return fromDateTime;
+	}
+
+	public void setFromDateTime(LocalDateTime fromDateTime) {
+		this.fromDateTime = fromDateTime;
+	}
+
+	public LocalDateTime getToDateTime() {
+		return toDateTime;
+	}
+
+	public void setToDateTime(LocalDateTime toDateTime) {
+		this.toDateTime = toDateTime;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public float getDistanceInKM() {
+		return distanceInKM;
+	}
+
+	public void setDistanceInKM(float distanceInKM) {
+		this.distanceInKM = distanceInKM;
+	}
+
+	public float getBill() {
+		return bill;
+	}
+
+	public void setBill(float bill) {
+		this.bill = bill;
+	}
+	
+	
+	
+	
+	
+	
+}
