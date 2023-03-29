@@ -11,10 +11,10 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	@ExceptionHandler(CabException.class)
-	public ResponseEntity<MyErrorDetails> studentExceptionHandler(CabException cab, WebRequest req) {
+	public ResponseEntity<MyErrorDetails> cabExceptionHandler(CabException cab, WebRequest req) {
 
 		MyErrorDetails err = new MyErrorDetails();
-		err.setTimetamp(LocalDateTime.now());
+		err.setTimeStamp(LocalDateTime.now());
 		err.setMessage(cab.getMessage());
 		err.setDetails(req.getDescription(false));
 
@@ -26,10 +26,23 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<MyErrorDetails> otherExceptionHandler(Exception se, WebRequest req) {
 
 		MyErrorDetails err = new MyErrorDetails();
-		err.setTimetamp(LocalDateTime.now());
+		err.setTimeStamp(LocalDateTime.now());
 		err.setMessage(se.getMessage());
 		err.setDetails(req.getDescription(false));
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<MyErrorDetails> CustomerExceptionHandler(CustomerException customer, WebRequest req) {
+
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimeStamp(LocalDateTime.now());
+		err.setMessage(customer.getMessage());
+		err.setDetails(req.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.NOT_FOUND);
+
+	}
+
 }
