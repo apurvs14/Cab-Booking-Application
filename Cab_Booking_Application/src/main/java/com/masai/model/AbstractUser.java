@@ -1,5 +1,8 @@
 package com.masai.model;
 
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class AbstractUser {
 
 	

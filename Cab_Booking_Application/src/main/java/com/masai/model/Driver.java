@@ -16,12 +16,12 @@ public class Driver extends AbstractUser{
 	
 	private String licenseNo;
 	
-	@OneToOne(mappedBy="cabID",cascade=CascadeType.ALL) 
+	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL) 
 	private Cab cab;
 	
 	private float rating;
 	
-	@OneToMany(mappedBy="tripBookingID",cascade=CascadeType.ALL)
+	@OneToMany
 	private List<TripBooking> tripBookings = new ArrayList<>();
 	
 	public Driver() {
