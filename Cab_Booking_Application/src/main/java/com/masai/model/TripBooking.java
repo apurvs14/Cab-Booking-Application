@@ -55,7 +55,6 @@ public class TripBooking {
 		this.fromDateTime = fromDateTime;
 		this.toDateTime = toDateTime;
 		this.status = status;
-		this.distanceInKM = distanceInKM;
 		this.bill = bill;
 	}
 

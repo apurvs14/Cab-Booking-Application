@@ -13,12 +13,10 @@ public class Driver extends AbstractUser{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private int driverID;
-	
 	private String licenseNo;
 	
 	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL) 
-	private Cab cab;
-	
+	private Cab cab;	
 	private float rating;
 	
 	@OneToMany
