@@ -12,11 +12,14 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
-	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
-	private int customerID;
+	@ManyToOne
+	@JoinColumn(name="customerID")
+	private Customer customer;
 	
-	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+	@ManyToOne
+	@JoinColumn(name="driverID")
 	private Driver driver;
+	
 	
 	private String fromLocation; 
 	private String toLocation; 
@@ -24,18 +27,28 @@ public class TripBooking {
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
-	private float bill;
+	private int pricePerKM;
+	
+	public int getPricePerKM() {
+		return pricePerKM;
+	}
+
+	public void setPricePerKM(int pricePerKM) {
+		this.pricePerKM = pricePerKM;
+	}
+
+	private float bill = distanceInKM;
 	
 	
 	public TripBooking() {
 		
 	}
 	
-	public TripBooking(int tripBookingID, int customerID, Driver driver, String fromLocation, String toLocation,
+	public TripBooking(int tripBookingID, Customer customer, Driver driver, String fromLocation, String toLocation,
 			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKM, float bill) {
 		super();
 		this.tripBookingID = tripBookingID;
-		this.customerID = customerID;
+		this.customer = customer;
 		this.driver = driver;
 		this.fromLocation = fromLocation;
 		this.toLocation = toLocation;
@@ -54,12 +67,12 @@ public class TripBooking {
 		this.tripBookingID = tripBookingID;
 	}
 
-	public int getCustomerID() {
-		return customerID;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Driver getDriver() {
