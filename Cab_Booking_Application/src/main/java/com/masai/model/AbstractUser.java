@@ -1,8 +1,10 @@
 package com.masai.model;
 
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class AbstractUser {
 
-	
 	private String userName;
 	private String password;
 	private String address;
@@ -61,11 +63,12 @@ public class AbstractUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "AbstractUser [ userName=" + userName + ", password=" + password + ", address="
+				+ address + ", mobileNumber=" + mobileNumber + ", email=" + email + "]";
+	}
 	
 	
 }

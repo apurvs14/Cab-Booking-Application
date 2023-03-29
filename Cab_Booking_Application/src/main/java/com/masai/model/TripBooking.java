@@ -13,7 +13,7 @@ public class TripBooking {
 	private int tripBookingID;
 	
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
-	private int customerID;
+	private Customer customer;
 	
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
 	private Driver driver;
@@ -31,11 +31,11 @@ public class TripBooking {
 		
 	}
 	
-	public TripBooking(int tripBookingID, int customerID, Driver driver, String fromLocation, String toLocation,
+	public TripBooking(int tripBookingID, Customer customer, Driver driver, String fromLocation, String toLocation,
 			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKM, float bill) {
 		super();
 		this.tripBookingID = tripBookingID;
-		this.customerID = customerID;
+		this.customer = customer;
 		this.driver = driver;
 		this.fromLocation = fromLocation;
 		this.toLocation = toLocation;
@@ -54,12 +54,12 @@ public class TripBooking {
 		this.tripBookingID = tripBookingID;
 	}
 
-	public int getCustomerID() {
-		return customerID;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Driver getDriver() {
