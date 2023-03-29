@@ -25,8 +25,8 @@ public class MyErrorDetails {
 
 	public void setLocalDateTime(LocalDateTime localDateTime) {
 		this.localDateTime = localDateTime;
-	}
-
+  }
+  
 	public String getMessage() {
 		return message;
 	}
@@ -41,10 +41,6 @@ public class MyErrorDetails {
 
 	public void setDetails(String details) {
 		this.details = details;
-	} 
-	
-	
-	
-	
-	
+
+	}
 }
