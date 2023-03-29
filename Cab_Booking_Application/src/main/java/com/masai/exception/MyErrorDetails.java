@@ -3,18 +3,30 @@ package com.masai.exception;
 import java.time.LocalDateTime;
 
 public class MyErrorDetails {
-	private LocalDateTime timetamp;
-	private String message;
+
+	private LocalDateTime localDateTime; 
+	private String message; 
 	private String details;
-
-	public LocalDateTime getTimestamp() {
-		return timetamp;
+	
+	public MyErrorDetails() {
+		
+	}
+	
+	public MyErrorDetails(LocalDateTime localDateTime, String message, String details) {
+		super();
+		this.localDateTime = localDateTime;
+		this.message = message;
+		this.details = details;
 	}
 
-	public void setTimetamp(LocalDateTime timetamp) {
-		this.timetamp = timetamp;
+	public LocalDateTime getLocalDateTime() {
+		return localDateTime;
 	}
 
+	public void setLocalDateTime(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
+  }
+  
 	public String getMessage() {
 		return message;
 	}
@@ -29,6 +41,6 @@ public class MyErrorDetails {
 
 	public void setDetails(String details) {
 		this.details = details;
-	}
 
+	}
 }

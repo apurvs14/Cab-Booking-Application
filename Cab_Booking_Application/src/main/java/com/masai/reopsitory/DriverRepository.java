@@ -8,4 +8,8 @@ import com.masai.model.Driver;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Integer> {
 
+	
+	
+	
+	
 }
