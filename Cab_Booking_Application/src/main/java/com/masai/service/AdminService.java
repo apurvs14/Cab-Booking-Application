@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.masai.exception.AdminException;
@@ -21,4 +22,6 @@ public interface AdminService {
 	public List<TripBooking> getTripsCustomerwise() throws AdminException;
 	
 	public List<TripBooking> getTripsDatewise() throws AdminException;
+	
+	public List<TripBooking> getTripsDatewiseAndCustomerHandler(Integer customerId,LocalDate date)throws AdminException;
 }

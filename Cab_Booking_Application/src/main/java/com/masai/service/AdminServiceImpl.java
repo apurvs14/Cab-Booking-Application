@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,5 +88,18 @@ public class AdminServiceImpl implements AdminService{
 			throw new AdminException("No Trips Found");
 		}
 	}
+
+	@Override
+	public List<TripBooking> getTripsDatewiseAndCustomerHandler(Integer customerId,LocalDate date) throws AdminException {
+		List<TripBooking> list = tripBookingRepo.findByCustomerIdAndFromDateTime(customerId,date);
+		if(list.size()>0) {
+			return list;
+		}else {
+			throw new AdminException("No trips found for customer id "+customerId+" and date : "+date);
+		}
+			
+	}
+	
+	
 
 }

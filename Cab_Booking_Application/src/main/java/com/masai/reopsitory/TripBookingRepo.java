@@ -1,5 +1,6 @@
 package com.masai.reopsitory;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,4 +22,7 @@ public interface TripBookingRepo  extends JpaRepository<TripBooking, Integer>{
 	
 	@Query("from trip_booking Order By from_date_time")
 	public List<TripBooking> findByFromDateTimeAsc();
+	
+	@Query("from trip_booking where customer_customerid=:cId AND from_date_time=:date")
+	public List<TripBooking> findByCustomerIdAndFromDateTime(Integer cId,LocalDate date);
 }
