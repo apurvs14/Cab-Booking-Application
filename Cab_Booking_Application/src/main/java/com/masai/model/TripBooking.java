@@ -3,7 +3,7 @@ package com.masai.model;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
-/*NOTE: All relations are bidirectional.*/
+
 
 @Entity
 public class TripBooking {
@@ -27,17 +27,7 @@ public class TripBooking {
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
-	private int pricePerKM;
-	
-	public int getPricePerKM() {
-		return pricePerKM;
-	}
-
-	public void setPricePerKM(int pricePerKM) {
-		this.pricePerKM = pricePerKM;
-	}
-
-	private float bill = distanceInKM;
+	private float bill;
 	
 	
 	public TripBooking() {

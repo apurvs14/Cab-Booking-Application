@@ -6,11 +6,13 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.masai.exception.DriverException;
+import com.masai.exception.DriverNotFoundException;
 import com.masai.model.Driver;
 import com.masai.reopsitory.DriverRepository;
 
+@Service
 public class IDriverServiceImpl implements IDriverService {
 
 	@Autowired
@@ -31,6 +33,8 @@ public class IDriverServiceImpl implements IDriverService {
 	@Override
 	public Supplier<Driver> updateDriver(Driver d)  {
 		
+		driverRepo.delete(d);
+		
 		Supplier<Driver> supplier = () ->{
 			return d;
 		}; 
@@ -44,6 +48,8 @@ public class IDriverServiceImpl implements IDriverService {
 		Supplier<Driver> supplier = () ->{
 			return d;
 		}; 
+		
+		driverRepo.delete(d);
 		
 		return supplier;
 		
