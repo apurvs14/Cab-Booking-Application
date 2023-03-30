@@ -16,6 +16,7 @@ public class Driver extends AbstractUser{
 	private String licenseNo;
 	
 	@OneToOne(cascade=CascadeType.ALL) 
+
 	@JoinColumn(name="driverID")
 	private Cab cab;
 
