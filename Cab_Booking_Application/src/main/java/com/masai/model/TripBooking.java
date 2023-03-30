@@ -3,7 +3,7 @@ package com.masai.model;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
-/*NOTE: All relations are bidirectional.*/
+
 
 @Entity
 public class TripBooking {
@@ -12,11 +12,14 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
+
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
 	private Customer customer;
 	
-	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+	@ManyToOne
+	@JoinColumn(name="driverID")
 	private Driver driver;
+	
 	
 	private String fromLocation; 
 	private String toLocation; 
@@ -42,7 +45,6 @@ public class TripBooking {
 		this.fromDateTime = fromDateTime;
 		this.toDateTime = toDateTime;
 		this.status = status;
-		this.distanceInKM = distanceInKM;
 		this.bill = bill;
 	}
 

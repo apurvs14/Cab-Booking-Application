@@ -6,7 +6,7 @@ import jakarta.persistence.MappedSuperclass;
 public class AbstractUser {
 
 	private String userName;
-	private String password;
+    transient private String password;
 	private String address;
 	private String mobileNumber;
 	private String email;
