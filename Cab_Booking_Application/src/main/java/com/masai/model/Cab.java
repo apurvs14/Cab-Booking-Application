@@ -7,13 +7,13 @@ public class Cab {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JoinColumn(name="driverID")
 	private int cabID;
 	
 	private String carType;
 	
 	private float perKmRate; 
 	
-	private int driverID;
 	
 	public Cab() {
 		
@@ -58,13 +58,7 @@ public class Cab {
 		this.perKmRate = perKmRate;
 	}
 
-	public int getDriverID() {
-		return driverID;
-	}
-
-	public void setDriverID(int driverID) {
-		this.driverID = driverID;
-	}
+	
 
 	@Override
 	public String toString() {
