@@ -42,4 +42,23 @@ public class AdminController {
 		List<TripBooking> trips = adminService.getAllTrips(cutomerId);
 		return new ResponseEntity<List<TripBooking>>(trips,HttpStatus.OK);
 	}
+	
+	@GetMapping("/trips/driverwise")
+	public ResponseEntity<List<TripBooking>> getTripsDriverwiseHandler() throws AdminException{
+		List<TripBooking> trips = adminService.getTripsDriverwise();
+		return new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
+	}
+	
+	@GetMapping("/customertrips")
+	public ResponseEntity<List<TripBooking>> getTripsCustomerwiseHandler() throws AdminException{
+		List<TripBooking> list = adminService.getTripsCustomerwise();
+		return new ResponseEntity<List<TripBooking>>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/datewisetrips")
+	public ResponseEntity<List<TripBooking>> getTripsDatewiseHandler() throws AdminException{
+		List<TripBooking> list = adminService.getTripsDatewise();
+		return new ResponseEntity<List<TripBooking>>(list,HttpStatus.OK);
+		
+	}
 }
