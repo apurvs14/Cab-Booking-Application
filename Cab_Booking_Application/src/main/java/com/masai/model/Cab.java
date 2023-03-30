@@ -11,23 +11,19 @@ public class Cab {
 	
 	private String carType;
 	
-	private float perKmRate;	
+	private float perKmRate; 
 	
-	@OneToOne
-	@JoinColumn(name="driverID")
-	private Driver driver;
-	
+	private int driverID;
 	
 	public Cab() {
 		
 	}
 
-	public Cab(int cabID, String carType, float perKmRate, Driver driver) {
+	public Cab(int cabID, String carType, float perKmRate) {
 		super();
 		this.cabID = cabID;
 		this.carType = carType;
 		this.perKmRate = perKmRate;
-		this.driver = driver;
 	}
 
 
@@ -62,19 +58,17 @@ public class Cab {
 		this.perKmRate = perKmRate;
 	}
 
-
-	public Driver getDriver() {
-		return driver;
+	public int getDriverID() {
+		return driverID;
 	}
 
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
+	public void setDriverID(int driverID) {
+		this.driverID = driverID;
 	}
 
 	@Override
 	public String toString() {
-		return "Cab [cabID=" + cabID + ", carType=" + carType + ", perKmRate=" + perKmRate + ", driver=" + driver + "]";
+		return "Cab [cabID=" + cabID + ", carType=" + carType + ", perKmRate=" + perKmRate +  "]";
 	}
 	
 	

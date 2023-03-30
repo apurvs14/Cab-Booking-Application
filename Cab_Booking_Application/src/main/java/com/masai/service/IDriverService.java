@@ -3,7 +3,7 @@ package com.masai.service;
 import java.util.List;
 import java.util.function.Supplier;
 
-import com.masai.exception.DriverException;
+import com.masai.exception.DriverNotFoundException;
 import com.masai.model.Driver;
 
 public interface IDriverService {
