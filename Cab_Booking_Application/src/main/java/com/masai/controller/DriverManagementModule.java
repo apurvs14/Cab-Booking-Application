@@ -29,7 +29,6 @@ public class DriverManagementModule {
 
 	@Autowired
 	private IDriverService driverService;
-//	private ICabService cabService;
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Driver> getDriverByID(@RequestParam("id") int id)
@@ -41,19 +40,7 @@ public class DriverManagementModule {
 		return new ResponseEntity<Driver>(d,HttpStatus.OK);
 	}
 	
-//	@PutMapping("/updateDriverIDOfCab/{driverID}") 
-//	public ResponseEntity<Driver> updateDriverIDOfCab(@RequestBody @PathVariable int driverID){
-//		
-//		Driver d = driverService.viewDriver(driverID); 
-//		
-//		Cab c = d.getCab(); 
-//		
-//		
-//		
-//		cabService.save(c);
-//		
-//		
-//	}
+
 	
 	
 	@GetMapping("/bestDriverList") 
