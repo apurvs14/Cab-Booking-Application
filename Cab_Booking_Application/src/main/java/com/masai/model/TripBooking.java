@@ -12,8 +12,8 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
-	@ManyToOne
-	@JoinColumn(name="customerID")
+
+	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
 	private Customer customer;
 	
 	@ManyToOne

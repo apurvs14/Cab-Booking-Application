@@ -15,9 +15,9 @@ public class Driver extends AbstractUser{
 	private int driverID;
 	private String licenseNo;
 	
-	@OneToOne(cascade = CascadeType.ALL )
-	@JoinColumn(name="driverID")
-	private Cab cab;	
+	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL) 
+	private Cab cab;
+
 	private float rating;
 	
 	@OneToMany

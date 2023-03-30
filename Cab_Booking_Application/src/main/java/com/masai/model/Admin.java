@@ -4,20 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Admin extends AbstractUser {
 
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int adminID;
+	
 
-	
-	public Admin() {
-		
-		
-	}
-	
+	public Admin() {}
+
 	public Admin(String userName, String password, String address, String mobileNumber, String email, int adminID) {
 		super(userName, password, address, mobileNumber, email);
 		this.adminID = adminID;
@@ -35,10 +33,6 @@ public class Admin extends AbstractUser {
 	public String toString() {
 		return "Admin [adminID=" + adminID + "]";
 	}
-	
-	
-	
-	
 	
 	
 }
