@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
-/*NOTE: All relations are bidirectional.*/
+
 
 @Entity
 public class TripBooking {
@@ -16,9 +16,14 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
+
 	@ManyToOne
 	@JoinColumn(name="customerID")
-	@JsonIgnore
+
+
+
+	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+
 	private Customer customer;
 	
 	@ManyToOne
@@ -34,17 +39,7 @@ public class TripBooking {
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
-	private int pricePerKM;
-	
-	public int getPricePerKM() {
-		return pricePerKM;
-	}
-
-	public void setPricePerKM(int pricePerKM) {
-		this.pricePerKM = pricePerKM;
-	}
-
-	private float bill = distanceInKM;
+	private float bill;
 	
 	
 	public TripBooking() {

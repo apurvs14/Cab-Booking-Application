@@ -12,8 +12,8 @@ import org.springframework.web.context.request.WebRequest;
 public class DriverManagementExceptionHandler {
 
 	
-	@ExceptionHandler(DriverException.class)
-	public ResponseEntity<MyErrorDetails> driverExceptionHandler1(DriverException de, WebRequest req){
+	@ExceptionHandler(DriverNotFoundException.class)
+	public ResponseEntity<MyErrorDetails> driverExceptionHandler1(DriverNotFoundException de, WebRequest req){
 		
 		MyErrorDetails med = new MyErrorDetails(LocalDateTime.now(),de.getMessage(),req.getDescription(false)); 
 		

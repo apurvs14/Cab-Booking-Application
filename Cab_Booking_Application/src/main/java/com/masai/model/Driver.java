@@ -4,7 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-/*NOTE: All relations are bidirectional.*/
+
 
 
 @Entity
@@ -15,8 +15,15 @@ public class Driver extends AbstractUser{
 	private int driverID;
 	private String licenseNo;
 	
+
 	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL,fetch = FetchType.EAGER) 
 	private Cab cab;	
+
+
+	@JoinColumn(name="driverID")
+	private Cab cab;
+
+
 	private float rating;
 	
 	@OneToMany
@@ -80,6 +87,15 @@ public class Driver extends AbstractUser{
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
+
+	public List<TripBooking> getTripBookings() {
+		return tripBookings;
+	}
+
+	public void setTripBookings(List<TripBooking> tripBookings) {
+		this.tripBookings = tripBookings;
+	}
+	
 	
 	
 	
