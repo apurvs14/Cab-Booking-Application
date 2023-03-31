@@ -1,16 +1,15 @@
 package com.masai.service;
 
-import java.rmi.NotBoundException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.TripNotFound;
+import com.masai.model.Customer;
 import com.masai.model.TripBooking;
-
+import com.masai.reopsitory.CustomerRepository;
 import com.masai.reopsitory.TripBookingRepo;
 
 
@@ -18,7 +17,12 @@ import com.masai.reopsitory.TripBookingRepo;
 public class BookingServiceImpl implements BookingService {
 	@Autowired
 	private TripBookingRepo tripBookingrepo;
-
+	
+	@Autowired
+	private CustomerRepository customerRepo;
+	
+	
+	
 	@Override
 	public TripBooking insertTripBooking(TripBooking tripBooking)  {
 		// TODO Auto-generated method stub
@@ -69,21 +73,24 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public TripBooking calculateBill(int customerld) {
 		// TODO Auto-generated method stub
-		Optional<TripBooking> tripBookingOptional = tripBookingrepo.findById(customerld);
+		Optional<Customer> tripBookingOptional = customerRepo.findById(customerld);
 	    if (tripBookingOptional.isPresent()) {
-	        TripBooking tripBooking = tripBookingOptional.get();
-	        float distance = tripBooking.getDistanceInKM();
-	        float price=tripBooking.getPricePerKM();
+	        List<TripBooking> list = tripBookingOptional.get().getTripBookings();
+	        TripBooking tripBooking=null;
+	        for(TripBooking trip:list)
+	        {
+	        	float distance = trip.getDistanceInKM();
+		        float price=trip.getPricePerKM();
+		        float fare = price*distance; 
+		        tripBooking.setBill(fare);
+	        }
 	       
-	        float fare = price*distance;
-	        tripBooking.setBill(fare);
-	        tripBookingrepo.save(tripBooking);
+	      
+	       // tripBookingrepo.save(tripBooking);
 	        return tripBooking;
 	    }
 	        else {
-	        	throw new TripNotFound("you Have not book any trip please book");
-	        	
-	        }
+	        	throw new TripNotFound("you Have not book any trip please book");  }
 		
 	
 	}
@@ -92,11 +99,15 @@ public class BookingServiceImpl implements BookingService {
 	public List<TripBooking> ViewAllTripsCustomer(int customerld) {
 		// TODO Auto-generated method stub
 		
-		Optional<List<TripBooking>> trips=tripBookingrepo.findByCustomer(customerld);
-		
-		if(trips.get().isEmpty()) throw new TripNotFound("Trips not found for this customer");
-	
-	return  trips.get();
+			Optional<Customer>customer=customerRepo.findById(customerld);
+			
+		if(customer.isPresent())
+		{
+			List<TripBooking>trips=customer.get().getTripBookings();
+			return trips;
+		}
+			
+	return  null;
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.masai.reopsitory;
 
+
+
+
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +16,6 @@ import com.masai.model.TripBooking;
 @Repository
 public interface TripBookingRepo  extends JpaRepository<TripBooking, Integer>{
 
-	Optional<List<TripBooking>> findByCustomer(int customerld);
 	
 	@Query("from trip_booking Group by driverid ORDER BY driverid")
 	public List<TripBooking> findByDriverAsc();

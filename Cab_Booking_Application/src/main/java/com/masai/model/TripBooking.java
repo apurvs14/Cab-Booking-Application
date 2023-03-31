@@ -1,6 +1,10 @@
 package com.masai.model;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 
@@ -13,7 +17,13 @@ public class TripBooking {
 	private int tripBookingID;
 	
 
+	@ManyToOne
+	@JoinColumn(name="customerID")
+
+
+
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+
 	private Customer customer;
 	
 	@ManyToOne
@@ -23,7 +33,9 @@ public class TripBooking {
 	
 	private String fromLocation; 
 	private String toLocation; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime fromDateTime; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
