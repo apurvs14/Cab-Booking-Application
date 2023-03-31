@@ -1,6 +1,10 @@
 package com.masai.model;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 /*NOTE: All relations are bidirectional.*/
@@ -14,6 +18,7 @@ public class TripBooking {
 	
 	@ManyToOne
 	@JoinColumn(name="customerID")
+	@JsonIgnore
 	private Customer customer;
 	
 	@ManyToOne
@@ -23,7 +28,9 @@ public class TripBooking {
 	
 	private String fromLocation; 
 	private String toLocation; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime fromDateTime; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
