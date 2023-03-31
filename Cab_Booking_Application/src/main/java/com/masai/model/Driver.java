@@ -7,6 +7,9 @@ import jakarta.persistence.*;
 /*NOTE: All relations are bidirectional.*/
 
 
+
+
+
 @Entity
 public class Driver extends AbstractUser{
 

@@ -18,7 +18,7 @@ public class TripBooking {
 	
 	@ManyToOne
 	@JoinColumn(name="customerID")
-	@JsonIgnore
+	
 	private Customer customer;
 	
 	@ManyToOne
