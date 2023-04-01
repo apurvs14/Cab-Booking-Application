@@ -2,7 +2,6 @@ package com.masai.model;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
@@ -16,21 +15,26 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
-
-	@ManyToOne
-	@JoinColumn(name="customerID")
-
-
+	@JsonIgnore
 
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
 
 	private Customer customer;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="driverID")
 	private Driver driver;
 	
-	
+	private float pricePerKM;
+	public float getPricePerKM() {
+		return pricePerKM;
+	}
+
+	public void setPricePerKM(float pricePerKM) {
+		this.pricePerKM = pricePerKM;
+	}
+
 	private String fromLocation; 
 	private String toLocation; 
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
@@ -46,17 +50,21 @@ public class TripBooking {
 		
 	}
 	
-	public TripBooking(int tripBookingID, Customer customer, Driver driver, String fromLocation, String toLocation,
-			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKM, float bill) {
+	
+	public TripBooking(int tripBookingID, Customer customer, Driver driver, float pricePerKM, String fromLocation,
+			String toLocation, LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKM,
+			float bill) {
 		super();
 		this.tripBookingID = tripBookingID;
 		this.customer = customer;
 		this.driver = driver;
+		this.pricePerKM = pricePerKM;
 		this.fromLocation = fromLocation;
 		this.toLocation = toLocation;
 		this.fromDateTime = fromDateTime;
 		this.toDateTime = toDateTime;
 		this.status = status;
+		this.distanceInKM = distanceInKM;
 		this.bill = bill;
 	}
 
