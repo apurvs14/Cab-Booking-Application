@@ -1,6 +1,7 @@
 package com.masai.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,18 +64,18 @@ public class AdminController {
 		List<TripBooking> list = adminService.getTripsCustomerwise();
 		return new ResponseEntity<List<TripBooking>>(list, HttpStatus.OK);
 	}
-	
-	@GetMapping("/datewisetrips")
-	public ResponseEntity<List<TripBooking>> getTripsDatewiseHandler() throws AdminException{
-		List<TripBooking> list = adminService.getTripsDatewise();
+
+	@GetMapping("/datewisetrips/{date}")
+	public ResponseEntity<List<TripBooking>> getTripsDatewiseHandler(@PathVariable("date") LocalDateTime date) throws AdminException{
+		List<TripBooking> list = adminService.getTripsDatewise(date);
 		return new ResponseEntity<List<TripBooking>>(list,HttpStatus.OK);
 		
 	}
 	
 	@GetMapping("/trips/{customerId}/{date}")
 	public ResponseEntity<List<TripBooking>> getTripsDatewiseAndCustomerHandler(@PathVariable("customerId") Integer customerId,@PathVariable("date") String date) throws AdminException{
-		LocalDate date1 = LocalDate.parse(date);
-		List<TripBooking> list = adminService.getTripsDatewiseAndCustomerHandler(customerId, date1);
+		LocalDateTime date1 = LocalDateTime.parse(date);
+		List<TripBooking> list = adminService.getTripsDatewiseAndCustomer(customerId, date1);
 		return new ResponseEntity<List<TripBooking>>(list,HttpStatus.OK) ;
 	}
 }

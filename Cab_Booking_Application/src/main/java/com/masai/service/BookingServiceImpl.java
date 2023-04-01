@@ -88,15 +88,15 @@ public class BookingServiceImpl implements BookingService {
 	
 	}
 
-	@Override
-	public List<TripBooking> ViewAllTripsCustomer(int customerld) {
-		// TODO Auto-generated method stub
-		
-		Optional<List<TripBooking>> trips=tripBookingrepo.findByCustomer(customerld);
-		
-		if(trips.get().isEmpty()) throw new TripNotFound("Trips not found for this customer");
-	
-	return  trips.get();
-	}
+//	@Override
+//	public List<TripBooking> ViewAllTripsCustomer(int customerld) {
+//		// TODO Auto-generated method stub
+//		
+//		Optional<List<TripBooking>> trips=tripBookingrepo.findByCustomer(customerld);
+//		
+//		if(trips.get().isEmpty()) throw new TripNotFound("Trips not found for this customer");
+//	
+//	return  trips.get();
+//	}
 
 }
