@@ -15,28 +15,46 @@ public class Driver extends AbstractUser{
 	private int driverID;
 	private String licenseNo;
 	
-	@OneToOne(cascade=CascadeType.ALL) 
+
+	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL,fetch = FetchType.EAGER) 
+	private Cab cab;	
+
 
 	@JoinColumn(name="driverID")
 	private Cab cab;
+
 
 	private float rating;
 	
 	@OneToMany
 	private List<TripBooking> tripBookings = new ArrayList<>();
 	
-	public Driver() {
-		
-	}
-
-	public Driver(String userName, String password, String address, String mobileNumber, String email, int driverID,
-			String licenseNo, Cab cab, float rating) {
+	
+	
+	
+	public Driver(int driverID, String licenseNo, Cab cab, float rating, List<TripBooking> tripBookings,String userName, String password, String address, String mobileNumber, String email) {
 		super(userName, password, address, mobileNumber, email);
 		this.driverID = driverID;
 		this.licenseNo = licenseNo;
 		this.cab = cab;
 		this.rating = rating;
+		this.tripBookings = tripBookings;
 	}
+
+
+
+//	public Driver(String userName, String password, String address, String mobileNumber, String email) {
+//		super(userName, password, address, mobileNumber, email);
+//		// TODO Auto-generated constructor stub
+//	}
+
+
+
+	public Driver() {
+		
+	}
+
+	
 
 	public int getDriverID() {
 		return driverID;

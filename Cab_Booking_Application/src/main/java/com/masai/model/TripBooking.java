@@ -16,7 +16,9 @@ public class TripBooking {
 	private int tripBookingID;
 	
 	@JsonIgnore
+
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
+
 	private Customer customer;
 	
 	@JsonIgnore
@@ -35,7 +37,9 @@ public class TripBooking {
 
 	private String fromLocation; 
 	private String toLocation; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime fromDateTime; 
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
 	private LocalDateTime toDateTime;
 	private boolean status;
 	private float distanceInKM; 
