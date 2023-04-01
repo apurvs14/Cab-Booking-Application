@@ -1,4 +1,5 @@
 # Cab Booking Application
+<img width="1000" height="500" alt="logo" src = "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/E983_IO_Auto_Blog_HERO.gif">
 It is built to support all the functionality related to managing a taxi booking system. 
 We will discuss each aspect of this project in detail for enhanced understanding.
 The Taxi Booking System project is designed in Spring Boot and Hibernate along with the source code.
@@ -17,7 +18,6 @@ Admin can maintain a database of drivers. Drivers have to register on the portal
 # Cab Booking Application ER diagram
 ![cab_booking_3](https://user-images.githubusercontent.com/68966858/185020617-92914a9c-b5e2-4b3b-aa36-dc6a26454cba.jpeg)
 
-. After running this program in spring boot we have to hit this url to see all the API's in swagger http://localhost:8888/swagger-ui.html#/
 # Functions of Admin, Customer, Driver
 ## Through admin we can : 
 1. Can Log in/Log out of the system.<br>
