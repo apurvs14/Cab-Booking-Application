@@ -12,7 +12,14 @@ public class Cab {
 	
 	private String carType;
 	
-	private float perKmRate; 
+
+	private float perKmRate;	
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="driverID")
+	private Driver driver;
+
+
 	
 	
 	public Cab() {

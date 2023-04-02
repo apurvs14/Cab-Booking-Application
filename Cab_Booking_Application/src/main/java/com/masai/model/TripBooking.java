@@ -15,6 +15,14 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
+
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="customerID")
+	
+	private Customer customer;
+	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+
 	@JsonIgnore
 
 	@ManyToOne(cascade=CascadeType.ALL) // when we persist any one object(customer,driver,tripbooking), all get persisted into database at once)
@@ -23,6 +31,7 @@ public class TripBooking {
 	
 	@JsonIgnore
 	@ManyToOne
+
 	@JoinColumn(name="driverID")
 	private Driver driver;
 	

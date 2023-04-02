@@ -15,8 +15,8 @@ public class Customer extends AbstractUser {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int customerID;
-	
-	@OneToMany
+	@JsonIgnore
+	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<TripBooking> tripBookings = new ArrayList<>();
 	
 	
@@ -44,6 +44,11 @@ public class Customer extends AbstractUser {
 
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerID=" + customerID + "]";
 	}
 	
 	

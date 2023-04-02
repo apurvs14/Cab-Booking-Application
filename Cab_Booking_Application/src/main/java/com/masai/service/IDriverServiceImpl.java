@@ -26,6 +26,7 @@ public class IDriverServiceImpl implements IDriverService {
 		Supplier<Driver> supplier = () -> {
 			 return driverRepo.save(d);
 		}; 
+		System.out.println(d);
 		
 		return supplier;
 	}
