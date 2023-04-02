@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,34 +23,34 @@ public class TripController {
 	private BookingService bookingService;
 	
 	@PostMapping("/tripBookings")
-	public ResponseEntity<TripBooking> bookCab(@RequestBody TripBooking tripBooking){
-		TripBooking trip=bookingService.insertTripBooking(tripBooking);
+	public ResponseEntity<TripBooking> bookCab(@RequestBody TripBooking tripBooking,@RequestParam("driverId") Integer driverId,@RequestParam("customerId") Integer customerId){
+		TripBooking trip=bookingService.insertTripBooking(tripBooking,driverId,customerId);
 		return new ResponseEntity<>(trip,HttpStatus.CREATED);
 		
 		
 		
 	}
-	@PutMapping("/tripBooking")
+	@PutMapping("/tripBookings")
 	public ResponseEntity<TripBooking> updateTripbooking(@RequestBody TripBooking tripbooking){
 		TripBooking trip=bookingService.updateTripBooking(tripbooking);
 		return new ResponseEntity<>(trip,HttpStatus.ACCEPTED);
 	}
-	@GetMapping("/tripBooking/{customerId}")
-	public ResponseEntity<List<TripBooking>> findTripByCustomerId(@RequestParam int customerId){
+	@GetMapping("/tripBookings/{customerId}")
+	public ResponseEntity<List<TripBooking>> findTripByCustomerId(@PathVariable int customerId){
 		List<TripBooking>trips=bookingService.ViewAllTripsCustomer(customerId);
 		return new ResponseEntity<>(trips,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/tripBooking/{tripBookingId}")
-	public ResponseEntity<TripBooking> deleteTripBooking(int tripBookingId){
+	@DeleteMapping("/tripBooking")
+	public ResponseEntity<TripBooking> deleteTripBooking(@RequestParam("tripBookingId") Integer tripBookingId){
 		TripBooking trip=bookingService.deleteTripooking(tripBookingId);
 		return new ResponseEntity<>(trip,HttpStatus.OK);
 		
 	}
 	@GetMapping("/bills/{customerId}")
-	public ResponseEntity<TripBooking>calculateBill(@RequestParam int customerId)
+	public ResponseEntity<String>calculateBill(@RequestParam int customerId)
 	{
-		TripBooking bill =bookingService.calculateBill(customerId);
+		String bill =bookingService.calculateBill(customerId);
 		return new ResponseEntity<>(bill,HttpStatus.OK);
 	}
 }
