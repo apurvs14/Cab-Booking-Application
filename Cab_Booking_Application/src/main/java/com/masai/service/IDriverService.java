@@ -10,9 +10,9 @@ public interface IDriverService {
     
 	public Supplier<Driver> insertDriver(Driver d);
 	
-	public Supplier<Driver> updateDriver(Driver d) ; 
+	public Driver updateDriver(Integer id,float rating)throws DriverException ; 
 	
-	public Supplier<Driver> deleteDriver(Driver d);  
+	public Driver deleteDriver(Driver d);  
 	
 	public List<Driver> viewBestDrivers();
 	

@@ -75,7 +75,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public TripBooking deleteTripooking(int tripBookingld) {
+	public TripBooking deleteTripooking(int tripBookingld) throws TripNotFound {
 		// TODO Auto-generated method stub
 		Optional<TripBooking>trip=tripBookingrepo.findById(tripBookingld);
 		if(!trip.isPresent()) {
@@ -88,7 +88,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public String calculateBill(int customerld) {
+	public String calculateBill(int customerld) throws TripNotFound {
 		// TODO Auto-generated method stub
 		Optional<Customer> tripBookingOptional = customerRepo.findById(customerld);
 	    if (tripBookingOptional.isPresent()) {
@@ -101,6 +101,7 @@ public class BookingServiceImpl implements BookingService {
 	        
 		        
 	        }
+	       
 	       
 	      
 	       // tripBookingrepo.save(tripBooking);

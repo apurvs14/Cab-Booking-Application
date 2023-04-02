@@ -32,23 +32,21 @@ public class IDriverServiceImpl implements IDriverService {
 	}
 
 	@Override
-	public Supplier<Driver> updateDriver(Driver d)  {
+	public Driver updateDriver(Integer id,float rating) throws DriverException {
 		
-		Supplier<Driver> supplier = () ->{
-			return d;
-		}; 
-		
-		return supplier;
+		Driver driver=driverRepo.findById(id).get();
+		if(driver==null) throw new DriverException("No Driver found for given id "+id);
+		driver.setRating(rating);
+		driverRepo.save(driver);
+		return driver;
 	}
 
 	@Override
-	public Supplier<Driver> deleteDriver(Driver d) {
+	public Driver deleteDriver(Driver d) {
 		
-		Supplier<Driver> supplier = () ->{
-			return d;
-		}; 
+		driverRepo.delete(d);
 		
-		return supplier;
+		return d;
 		
 	}
 
@@ -56,11 +54,12 @@ public class IDriverServiceImpl implements IDriverService {
 	public List<Driver> viewBestDrivers() {
 		
 		List<Driver> drivers = driverRepo.findAll();
+		System.out.println(drivers);
 		
 		List<Driver> filteredDrivers = new ArrayList<>();
 		
 		for(Driver d:drivers) {
-			if(d.getRating()>=4.5) {
+			if(d.getRating()>=4.2) {
 				filteredDrivers.add(d);
 			}
 		}
