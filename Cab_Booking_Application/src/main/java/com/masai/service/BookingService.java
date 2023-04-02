@@ -14,7 +14,7 @@ public TripBooking	insertTripBooking(TripBooking tripBooking ,Integer driverId,I
 	public String calculateBill(int customerld) throws TripNotFound;
 
 
-	public List<TripBooking>ViewAllTripsCustomer(int customerld) throws TripNotFound;
+//	public List<TripBooking>ViewAllTripsCustomer(int customerld) throws TripNotFound;
 	
 
 }

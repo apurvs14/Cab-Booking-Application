@@ -7,27 +7,30 @@ public class Cab {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JoinColumn(name="driverID")
 	private int cabID;
 	
 	private String carType;
 	
+
 	private float perKmRate;	
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="driverID")
 	private Driver driver;
+
+
 	
 	
 	public Cab() {
 		
 	}
 
-	public Cab(int cabID, String carType, float perKmRate, Driver driver) {
+	public Cab(int cabID, String carType, float perKmRate) {
 		super();
 		this.cabID = cabID;
 		this.carType = carType;
 		this.perKmRate = perKmRate;
-		this.driver = driver;
 	}
 
 
@@ -62,19 +65,11 @@ public class Cab {
 		this.perKmRate = perKmRate;
 	}
 
-
-	public Driver getDriver() {
-		return driver;
-	}
-
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Cab [cabID=" + cabID + ", carType=" + carType + ", perKmRate=" + perKmRate + ", driver=" + driver + "]";
+		return "Cab [cabID=" + cabID + ", carType=" + carType + ", perKmRate=" + perKmRate +  "]";
 	}
 	
 	

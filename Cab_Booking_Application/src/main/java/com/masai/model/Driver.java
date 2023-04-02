@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
-/*NOTE: All relations are bidirectional.*/
+
 
 
 
@@ -26,6 +26,7 @@ public class Driver extends AbstractUser{
 	@JsonIgnore
 	@OneToMany(mappedBy="driver",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<TripBooking> tripBookings = new ArrayList<>();
+	
 	
 	
 	
@@ -88,12 +89,21 @@ public class Driver extends AbstractUser{
 
 
 
+
 	@Override
 	public String toString() {
 		return "Driver [driverID=" + driverID + ", licenseNo=" + licenseNo + ", cab=" + cab + ", rating=" + rating
 				+ ", tripBookings=" + tripBookings + "]";
 	}
-	
+
+	public List<TripBooking> getTripBookings() {
+		return tripBookings;
+	}
+
+	public void setTripBookings(List<TripBooking> tripBookings) {
+		this.tripBookings = tripBookings;
+	}
+
 	
 	
 	

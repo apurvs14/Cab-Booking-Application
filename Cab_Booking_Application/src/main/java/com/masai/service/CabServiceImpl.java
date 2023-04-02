@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import com.masai.exception.CabException;
 import com.masai.model.Cab;
 import com.masai.reopsitory.CabRepo;
+import com.masai.reopsitory.DriverRepository;
 
 @Service
 public class CabServiceImpl implements CabService {
 	@Autowired
 	private CabRepo cabrepo;
+	@Autowired
+	private DriverRepository driverrepo;
 
 	@Override
 	public Cab insertCab(Cab cab) throws CabException {
@@ -46,7 +49,5 @@ public class CabServiceImpl implements CabService {
 	public int countCabsOfType(String carType) {
 		return cabrepo.countByCarType(carType);
 	}
-	
-
 
 }
