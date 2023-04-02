@@ -2,6 +2,8 @@ package com.masai.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 /*NOTE: All relations are bidirectional.*/
@@ -17,12 +19,12 @@ public class Driver extends AbstractUser{
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private int driverID;
 	private String licenseNo;
-	
+	@JsonIgnore
 	@OneToOne(mappedBy="driver",cascade=CascadeType.ALL,fetch = FetchType.EAGER) 
 	private Cab cab;	
 	private float rating;
-	
-	@OneToMany
+	@JsonIgnore
+	@OneToMany(mappedBy="driver",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<TripBooking> tripBookings = new ArrayList<>();
 	
 	
@@ -82,6 +84,14 @@ public class Driver extends AbstractUser{
 
 	public void setRating(float rating) {
 		this.rating = rating;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Driver [driverID=" + driverID + ", licenseNo=" + licenseNo + ", cab=" + cab + ", rating=" + rating
+				+ ", tripBookings=" + tripBookings + "]";
 	}
 	
 	

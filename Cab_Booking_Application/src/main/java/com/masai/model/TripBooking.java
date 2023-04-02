@@ -16,12 +16,12 @@ public class TripBooking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tripBookingID;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="customerID")
 	
 	private Customer customer;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="driverID")
 	private Driver driver;
 	

@@ -13,7 +13,7 @@ public class Cab {
 	
 	private float perKmRate;	
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="driverID")
 	private Driver driver;
 	

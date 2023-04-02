@@ -22,8 +22,8 @@ public class TripController {
 	private BookingService bookingService;
 	
 	@PostMapping("/tripBookings")
-	public ResponseEntity<TripBooking> bookCab(@RequestBody TripBooking tripBooking){
-		TripBooking trip=bookingService.insertTripBooking(tripBooking);
+	public ResponseEntity<TripBooking> bookCab(@RequestBody TripBooking tripBooking, @RequestParam("driverId") Integer driverId,@RequestParam("customerId")Integer customerId){
+		TripBooking trip=bookingService.insertTripBooking(tripBooking,driverId,customerId);
 		return new ResponseEntity<>(trip,HttpStatus.CREATED);
 		
 		
@@ -47,9 +47,9 @@ public class TripController {
 		
 	}
 	@GetMapping("/bills/{customerId}")
-	public ResponseEntity<TripBooking>calculateBill(@RequestParam int customerId)
+	public ResponseEntity<String>calculateBill(@RequestParam int customerId)
 	{
-		TripBooking bill =bookingService.calculateBill(customerId);
+		String bill =bookingService.calculateBill(customerId);
 		return new ResponseEntity<>(bill,HttpStatus.OK);
 	}
 }
