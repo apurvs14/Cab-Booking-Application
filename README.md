@@ -1,17 +1,18 @@
 #  Relaxi Taxi - Cab Booking Application 
 <img width="1000" height="500" alt="logo" src = "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/E983_IO_Auto_Blog_HERO.gif">
-It is built to support all the functionality related to managing a taxi booking system. 
-We will discuss each aspect of this project in detail for enhanced understanding.
-The Taxi Booking System project is designed in Spring Boot and Hibernate along with the source code.
-Admin will be responsible for keeping a check on the booking of taxis, managing taxis, drivers,
-payments, etc. On the other hand, Users can register themselves, log in using the login credentials,
-view and book the taxi, view charges, etc.
+This application is built to support all the functionality related to management of Taxi Booking System.
 
-we  have designed a cab Booking System project in spring boot & hibernate, which has three main roles i.e. Admin and User. Admin is the primary user and can add/remove/update any details related to the system. Admin can manage registered users and drivers. Admin can Add/Remove/Update cab and their details from the system. Admin can also categorize taxis accordingly. Admin will be responsible for keeping a check on all the bookings done by users. Admin can View/Confirm/Cancel bookings done by users. Admin can check and manage the availability of cab and also, keep a track of the status of all the cab that are engaged.
+Let's look into each and every aspect of this project in detail for enhanced understanding.
+
+This Taxi Booking System project is designed in Spring Boot and Hibernate along with the source code.
+
+Admin will be responsible for keeping a check on the booking of taxis, managing taxis, drivers, payments, etc. On the other hand, Users can register themselves, log in using the login credentials, view and book the taxi, view charges, etc.
+
+We  have designed a Cab Booking System project in Spring Boot & Hibernate, which has three main roles i.e. admin and user. Admin is the primary user and can add/remove/update any details related to the system. Admin can manage registered users and drivers. Admin can add/remove/update Cab and their details from the system. Admin can also categorize taxis accordingly. Admin will be responsible for keeping a check on all the bookings done by users. Admin can view/confirm/cancel bookings done by users. Admin can check and manage the availability of cab and also, keep a track of the status of all the cab that are engaged.
 
 Admin can set/update prices and charges of the taxi rides. Admin can manage the drivers and their details.
 
-On the other hand, users can register. Users can search and view the taxis available. Users can search taxis by entering the location.
+On the other hand, users can register. Users can search and view the taxis available and can also search taxis by entering the location.
 
 Admin can maintain a database of drivers. Drivers have to register on the portal. Drivers will be able to see the booking done by users and details of users like name, source, and destination location.
 
