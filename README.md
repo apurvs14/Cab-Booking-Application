@@ -1,4 +1,4 @@
-# Cab Booking Application
+#  Relaxi Taxi - Cab Booking Application 
 <img width="1000" height="500" alt="logo" src = "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/E983_IO_Auto_Blog_HERO.gif">
 It is built to support all the functionality related to managing a taxi booking system. 
 We will discuss each aspect of this project in detail for enhanced understanding.
